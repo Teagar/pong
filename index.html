@@ -35,6 +35,7 @@
       const tamanhoBola = 15;
 
       function desenhar() {
+        pincel.clearRect(0, 0, tela.width, tela.height)
         pincel.fillStyle = "white";
 
         pincel.fillRect(
@@ -60,6 +61,24 @@
           tamanhoBola
         );
       }
+
+      function moverBola() {
+        bola.x += bola.velX;
+        bola.y += bola.velY;
+        
+        if (bola.y <= 0 || bola.y + tamanhoBola >= tela.height) {
+         bola.velY = -bola.velY; 
+        }
+      }
+      
+      function jogar() {
+        moverBola();
+        desenhar();
+
+        requestAnimationFrame(jogar);
+      }
+
+      jogar();
 
     </script>
   </body>
