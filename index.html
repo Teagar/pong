@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8">
+    <title>Pong</title>
+  <style>
+    body {
+      background: lightblue;
+    }
+    canvas {
+      background: black;
+      border: 4px solid white;
+    }
+
+  </style>
+  </head>
+
+  <body>
+    <h1>Pong</h1>
+    <p>Jogador 1: W e S / Jogador 2: cima e baixo</p>
+
+    <canvas id="jogo" width="600" height="400"></canvas>
+
+    <script>
+      const tela = document.getElementById("jogo");
+      const pincel = tela.getContext("2d");
+
+      const raquete1 = { x: 20, y: 150 };
+      const raquete2 = { x: 565, y: 150 };
+
+      const bola = {x: 300, y: 200, velX: 4, velY: 4};
+
+      const larguraRaquete = 15;
+      const alturaRaquete = 100;
+      const tamanhoBola = 15;
+
+      function desenhar() {
+        pincel.fillStyle = "white";
+
+        pincel.fillRect(
+          raquete1.x,
+          raquete1.y,
+          larguraRaquete,
+          alturaRaquete
+        );
+
+        pincel.fillRect(
+          raquete2.x,
+          raquete2.y,
+          larguraRaquete,
+          alturaRaquete
+        );
+
+        pincel.fillStyle = "yellow";
+
+        pincel.fillRect(
+          bola.x,
+          bola.y,
+          tamanhoBola,
+          tamanhoBola
+        );
+      }
+
+    </script>
+  </body>
+
+</html>
