@@ -69,6 +69,13 @@
         if (bola.y <= 0 || bola.y + tamanhoBola >= tela.height) {
          bola.velY = -bola.velY; 
         }
+
+        if (bola.x < 0 || bola.x > tela.width) {
+          bola.x = tela.width / 2;
+          bola.y = tela.width / 2;
+          bola.velX = -bola.velX;
+        }
+
       }
       
       function jogar() {
