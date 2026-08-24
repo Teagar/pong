@@ -44,6 +44,41 @@
         teclas[evento.key] = false;
       })
 
+      function moverRaquetes() {
+        if (teclas["w"]) raquete1.y -= 5;
+        if (teclas["s"]) raquete1.y += 5;
+
+
+        if (teclas["ArrowUp"]) raquete2.y -= 5;
+        if (teclas["ArrowDown"]) raquete2.y += 5;
+
+        if (raquete1.y < 0) raquete1.y = 0;
+
+        if (raquete1.y > tela.height - alturaRaquete) {
+          raquete1.y = tela.height - alturaRaquete;
+        }
+
+
+        if (raquete2.y < 0) raquete2.y = 0;
+
+        if (raquete2.y > tela.height - alturaRaquete) {
+          raquete2.y = tela.height - alturaRaquete;
+        }
+
+        if (tocou(raquete1) || tocou(raquete2)) {
+          bola.velX = -bola.velX;
+        }
+      }
+
+      function tocou(raquete) {
+        return (
+          bola.x < raquete.x + larguraRaquete &&
+          bola.x + tamanhoBola > raquete.x &&
+          bola.y < raquete.y + alturaRaquete &&
+          bola.y + tamanhoBola > raquete.y
+        );
+      }
+
       function desenhar() {
         pincel.clearRect(0, 0, tela.width, tela.height)
         pincel.fillStyle = "white";
@@ -89,6 +124,7 @@
       }
       
       function jogar() {
+        moverRaquetes();
         moverBola();
         desenhar();
 
