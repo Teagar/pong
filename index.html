@@ -34,6 +34,16 @@
       const alturaRaquete = 100;
       const tamanhoBola = 15;
 
+      const teclas = {};
+
+      document.addEventListener("keydown", evento => {
+        teclas[evento.key] = true;
+      })
+
+      document.addEventListener("keyup", evento => {
+        teclas[evento.key] = false;
+      })
+
       function desenhar() {
         pincel.clearRect(0, 0, tela.width, tela.height)
         pincel.fillStyle = "white";
